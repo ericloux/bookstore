@@ -10,30 +10,7 @@ const home = {
 
 const root=document.querySelector("#root");
 
-let book = new Array()
-
-book.push({
-    "id": 1,
-    "title": "A Real Book",
-    "author": "A. Realauthor",
-    "price": "$24.99",
-    "sellingPoints": [
-        "Is an actual book",
-        "You can read and reflect on it",
-        "Such inside text"
-    ]
-});
-
-book.push({
-    "id": 2,
-    "title": "Principles of Being Awesome",
-    "author": "Eric Loux",
-    "price": "$44.99",
-    "sellingPoints": [
-        "Learn awesome",
-        "Written by the master"
-    ]
-});
+let book = JSON.parse(localStorage.getItem('books')); // 
 
 function render(state, books) {
     root.innerHTML = `
@@ -47,6 +24,7 @@ function render(state, books) {
             event.preventDefault();
             console.log("event.target.textContent", event.target.textContent);
             render(states[event.target.textContent]);
+            localStorage.setItem('books', JSON.stringify(book));
         })
     );
 
@@ -85,10 +63,9 @@ function render(state, books) {
     
         book.push(newBook);
     
-        console.log(book)
-    
         render(state,book);
     });
+    localStorage.setItem('books', JSON.stringify(book));
 };
 
 

@@ -218,21 +218,7 @@ var home = {
   title: "Welcome to bookstore"
 };
 var root = document.querySelector("#root");
-var book = new Array();
-book.push({
-  "id": 1,
-  "title": "A Real Book",
-  "author": "A. Realauthor",
-  "price": "$24.99",
-  "sellingPoints": ["Is an actual book", "You can read and reflect on it", "Such inside text"]
-});
-book.push({
-  "id": 2,
-  "title": "Principles of Being Awesome",
-  "author": "Eric Loux",
-  "price": "$44.99",
-  "sellingPoints": ["Learn awesome", "Written by the master"]
-});
+var book = JSON.parse(localStorage.getItem('books')); // 
 
 function render(state, books) {
   root.innerHTML = "\n        ".concat((0, _Header.default)(state), "\n        ").concat((0, _Content.default)(state, books), "\n        ").concat((0, _AddBook.default)(state), "\n        ").concat((0, _Footer.default)(state), "\n    ");
@@ -241,6 +227,7 @@ function render(state, books) {
       event.preventDefault();
       console.log("event.target.textContent", event.target.textContent);
       render(states[event.target.textContent]);
+      localStorage.setItem('books', JSON.stringify(book));
     });
   });
   document.getElementById("buttonAddBook").addEventListener("click", function () {
@@ -275,9 +262,9 @@ function render(state, books) {
     }
 
     book.push(newBook);
-    console.log(book);
     render(state, book);
   });
+  localStorage.setItem('books', JSON.stringify(book));
 }
 
 ;
@@ -310,7 +297,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46729" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45291" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
