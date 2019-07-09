@@ -1,0 +1,33 @@
+.book {
+    border: solid black 1px;
+    background-color: #0000DD;
+}
+
+header {
+    font-size: 20px;
+    text-align: center;
+    padding: 30px 0px
+}
+
+footer {
+    font-size: 8px;
+    text-align: center
+}
+
+.bookContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(400px);
+    grid-gap: 1em;
+}
+
+.bookAddForm {
+    margin: 30px auto;
+    width: 400px;
+    text-align:center;
+}
+
+input {
+    width: 100%;
+    background-color: #0000DD;
+}
